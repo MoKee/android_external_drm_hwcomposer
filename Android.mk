@@ -75,7 +75,6 @@ LOCAL_SRC_FILES := \
 	drmdisplaycompositor.cpp \
 	drmencoder.cpp \
 	drmeventlistener.cpp \
-	drmhwctwo.cpp \
 	drmmode.cpp \
 	drmplane.cpp \
 	drmproperty.cpp \
@@ -85,6 +84,12 @@ LOCAL_SRC_FILES := \
 	separate_rects.cpp \
 	virtualcompositorworker.cpp \
 	vsyncworker.cpp
+
+ifeq ($(TARGET_FORCES_DRM_HWC1),true)
+LOCAL_SRC_FILES += hwcomposer.cpp
+else
+LOCAL_SRC_FILES += drmhwctwo.cpp
+endif
 
 LOCAL_CFLAGS := $(common_drm_hwcomposer_cflags)
 
